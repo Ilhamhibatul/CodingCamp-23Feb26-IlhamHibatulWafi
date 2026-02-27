@@ -1,14 +1,316 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BrahmaTech Inovation</title>
+
+    <link rel="icon" type="image/png" href="assets/logos.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 500: '#facc15', 600: '#eab308', 900: '#1a1a1a' } // Yellow theme based on mockup logo
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <header></header>
-    <main></main>
-    <footer></footer>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="navigate('home')">
+                    <img src="assets/logos.png" alt="Brahma Logo" class="h-10 w-auto object-contain">
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-2">
+                    <button onclick="navigate('home')" class="nav-btn active px-4 py-2 text-sm font-medium border border-gray-300 rounded hover:bg-gray-100 transition">Home</button>
+                    <button onclick="navigate('profile')" class="nav-btn px-4 py-2 text-sm font-medium border border-gray-300 rounded hover:bg-gray-100 transition">Our Profile</button>
+                    <button onclick="navigate('home', 'portfolio')" class="nav-btn px-4 py-2 text-sm font-medium border border-gray-300 rounded hover:bg-gray-100 transition">Portfolio</button>
+                    <button onclick="navigate('home', 'message-us')" class="nav-btn px-4 py-2 text-sm font-medium border border-gray-300 rounded hover:bg-gray-100 transition">Message Us</button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuBtn" class="text-gray-500 hover:text-gray-700 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <button onclick="navigate('home')" class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-gray-50">Home</button>
+                <button onclick="navigate('profile')" class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-gray-50">Our Profile</button>
+                <button onclick="navigate('home', 'message-us')" class="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-gray-50">Message Us</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow">
+        
+        <!-- ================= VIEW: HOME ================= -->
+        <div id="view-home" class="page-view active">
+            
+            <!-- Hero Section -->
+            <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                    Hi <span id="userName" class="text-brand-600">Guest</span>, Welcome To BrahmaTech
+                </h1>
+                <p class="text-gray-600 mb-8">Tingkatkan potensi online anda dengan layanan pembuatan website profesional kami.</p>
+                
+                <!-- Image Home -->
+                <div class="w-full h-[300px] md:h-[500px] bg-gray-200 rounded-lg overflow-hidden relative shadow-inner flex items-center justify-center group">
+                    <img src="assets/homeimg.jpeg" alt="Tech Banner" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                    </div>
+                </div>
+            </section>
+
+            <hr class="border-gray-200">
+
+            <!-- Headquarters Section -->
+            <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <h2 class="text-2xl font-bold text-gray-900 mb-10 text-center md:text-left">Our Headquarter</h2>
+                <div class="flex flex-wrap justify-center gap-10 md:gap-20">
+                    <!-- HQ 1 -->
+                    <div class="flex flex-col items-center group">
+                        <div class="w-32 h-32 rounded-full border-4 border-gray-200 overflow-hidden mb-4 group-hover:border-brand-500 transition duration-300 shadow-md">
+                            <img src="assets/jkt.jpeg" alt="Jakarta" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-gray-700 font-medium">Jakarta</span>
+                    </div>
+                    <!-- HQ 2 -->
+                    <div class="flex flex-col items-center group">
+                        <div class="w-32 h-32 rounded-full border-4 border-gray-200 overflow-hidden mb-4 group-hover:border-brand-500 transition duration-300 shadow-md">
+                            <img src="assets/bandung.jpg" alt="Bandung" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-gray-700 font-medium">Bandung</span>
+                    </div>
+                    <!-- HQ 3 -->
+                    <div class="flex flex-col items-center group">
+                        <div class="w-32 h-32 rounded-full border-4 border-gray-200 overflow-hidden mb-4 group-hover:border-brand-500 transition duration-300 shadow-md">
+                            <img src="assets/sby.jpg" alt="Surabaya" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-gray-700 font-medium">Surabaya</span>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="border-gray-200">
+
+            <!-- Portfolio Section -->
+            <section id="portfolio" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-gray-50">
+                <h2 class="text-2xl font-bold text-gray-900 mb-10 text-center md:text-left">Our Portfolio</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Portfolio Item 1 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden group cursor-pointer hover:shadow-lg transition duration-300">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="assets/webEcommerce.png" alt="Web Development" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute top-3 right-3 bg-brand-500 text-brand-900 text-xs font-bold px-2 py-1 rounded">Website</div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-bold text-lg mb-2 text-gray-800 group-hover:text-brand-600 transition">E-Commerce Platform</h3>
+                            <p class="text-sm text-gray-500 line-clamp-2">Pengembangan platform e-commerce terintegrasi dengan payment gateway untuk retail berskala nasional.</p>
+                        </div>
+                    </div>
+
+                    <!-- Portfolio Item 2 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden group cursor-pointer hover:shadow-lg transition duration-300">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="assets/finTech.jpg" alt="Data Dashboard" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute top-3 right-3 bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded">UI/UX</div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-bold text-lg mb-2 text-gray-800 group-hover:text-brand-600 transition">Fintech Dashboard</h3>
+                            <p class="text-sm text-gray-500 line-clamp-2">Perancangan antarmuka pengguna (UI/UX) untuk dashboard analitik keuangan yang intuitif dan modern.</p>
+                        </div>
+                    </div>
+
+                    <!-- Portfolio Item 3 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden group cursor-pointer hover:shadow-lg transition duration-300">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="assets/mobileApp.jpg" alt="Mobile App" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute top-3 right-3 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">Mobile App</div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-bold text-lg mb-2 text-gray-800 group-hover:text-brand-600 transition">Personal Money Management App</h3>
+                            <p class="text-sm text-gray-500 line-clamp-2">Aplikasi mobile berbasis iOS dan Android untuk mempermudah manajemen keuangan anda.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <hr class="border-gray-200">
+
+            <!-- Message Us Section -->
+            <section id="message-us" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <h2 class="text-2xl font-bold text-gray-900 mb-8">Message Us</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Form Side -->
+                    <div>
+                        <form id="messageForm" class="space-y-4">
+                            <div class="flex items-center">
+                                <label for="nama" class="w-1/3 text-sm text-gray-700">Nama :</label>
+                                <input type="text" id="nama" placeholder="Nama" class="w-2/3 border border-gray-300 p-2 rounded focus:ring-2 focus:ring-brand-500 outline-none transition">
+                            </div>
+                            <div class="flex items-center">
+                                <label for="tanggalLahir" class="w-1/3 text-sm text-gray-700">Tanggal Lahir :</label>
+                                <input type="date" id="tanggalLahir" class="w-2/3 border border-gray-300 p-2 rounded focus:ring-2 focus:ring-brand-500 outline-none transition text-gray-600">
+                            </div>
+                            <div class="flex items-center">
+                                <label class="w-1/3 text-sm text-gray-700">Jenis Kelamin :</label>
+                                <div class="w-2/3 flex gap-4">
+                                    <label class="flex items-center gap-2 cursor-pointer text-sm">
+                                        <input type="radio" name="jenisKelamin" value="Laki-Laki" class="accent-brand-600"> Laki-Laki
+                                    </label>
+                                    <label class="flex items-center gap-2 cursor-pointer text-sm">
+                                        <input type="radio" name="jenisKelamin" value="Perempuan" class="accent-brand-600"> Perempuan
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <label for="pesan" class="w-1/3 text-sm text-gray-700 pt-2">Pesan :</label>
+                                <textarea id="pesan" rows="4" placeholder="Pesan" class="w-2/3 border border-gray-300 p-2 rounded focus:ring-2 focus:ring-brand-500 outline-none transition resize-none"></textarea>
+                            </div>
+                            <div class="pt-4">
+                                <button type="submit" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 border border-gray-300 font-medium py-2 px-4 rounded transition duration-200">
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Result Box Side -->
+                    <div class="h-full">
+                        <div class="border border-gray-300 p-6 rounded-lg h-full bg-white shadow-sm font-mono text-sm leading-relaxed">
+                            <p class="mb-4 text-gray-500"><strong>Current time :</strong> <span id="currentTime">-</span></p>
+                            <div class="text-gray-800 space-y-1">
+                                <p><strong>Nama :</strong> <span id="outName">-</span></p>
+                                <p><strong>Tanggal Lahir :</strong> <span id="outDob">-</span></p>
+                                <p><strong>Jenis Kelamin :</strong> <span id="outGender">-</span></p>
+                                <p><strong>Pesan :</strong> <span id="outMessage">-</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= VIEW: OUR PROFILE ================= -->
+        <div id="view-profile" class="page-view hidden">
+            <!-- Photo Banner -->
+            <div class="relative w-full h-[400px] bg-gray-900">
+                <img src="assets/ourprofileImg.jpeg" alt="Team BrahmaTech" class="w-full h-full object-cover opacity-60">
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-white px-4 text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Empowering Your Digital Future</h1>
+                    <p class="text-lg md:text-xl max-w-2xl font-light">BrahmaTech Inovation adalah partner terpercaya Anda dalam memajukan bisnis melalui solusi IT yang mutakhir dan estetik.</p>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <!-- About Us -->
+                <div class="mb-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-4 border-brand-500 inline-block pb-2">About The Company</h2>
+                        <p class="text-gray-600 leading-relaxed mb-4 text-justify">
+                            Didirikan pada tahun 2021, <strong>BrahmaTech Inovation</strong> bermula dari sekumpulan talenta kreatif yang memiliki passion dalam rekayasa perangkat lunak dan desain UI/UX. Kami bergerak di bidang jasa pembuatan website profesional, perancangan desain grafis, pembuatan aplikasi mobile, hingga manajemen infrastruktur IT.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed text-justify">
+                            Tim kami terdiri dari developer berpengalaman, desainer yang detail-oriented, dan analis sistem yang berdedikasi tinggi. Kami percaya bahwa teknologi harus mempermudah hidup dan mempercepat pertumbuhan bisnis Anda, dan itulah janji yang selalu kami pegang teguh di setiap baris kode yang kami tulis.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="assets/aboutUs1.jpeg" class="rounded-lg shadow-md object-cover h-48 w-full" alt="Coding">
+                        <img src="assets/aboutUs2.jpg" class="rounded-lg shadow-md object-cover h-48 w-full mt-8" alt="Design">
+                    </div>
+                </div>
+
+                <!-- Vision & Mission -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:-translate-y-2 transition duration-300">
+                        <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center text-2xl mb-6 shadow-inner">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Visi Kami</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Menjadi Software House terdepan di Asia Tenggara yang terus menghasilkan inovasi digital berkelanjutan, menciptakan ekosistem teknologi yang inklusif, dan menjadi pionir dalam menetapkan standar kualitas pengembangan perangkat lunak berbasis estetika dan performa.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:-translate-y-2 transition duration-300">
+                        <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center text-2xl mb-6 shadow-inner">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Misi Kami</h3>
+                        <ul class="text-gray-600 leading-relaxed space-y-3 list-none">
+                            <li><i class="fas fa-check text-brand-500 mr-2"></i> Memberikan solusi IT yang tepat guna bagi klien.</li>
+                            <li><i class="fas fa-check text-brand-500 mr-2"></i> Mengutamakan desain antarmuka (UI/UX) yang intuitif & modern.</li>
+                            <li><i class="fas fa-check text-brand-500 mr-2"></i> Menggunakan tech-stack terbaru untuk performa optimal.</li>
+                            <li><i class="fas fa-check text-brand-500 mr-2"></i> Membangun hubungan jangka panjang dengan klien melalui support yang responsif.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <hr class="border-gray-300">
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 py-8 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            
+            <!-- Social Media Icons (Clickable) -->
+            <div class="flex space-x-6">
+                <!-- Gunakan link asli sosmed perusahaan. Disini menggunakan hashtag sebagai placeholder -->
+                <a href="https://www.linkedin.com/in/ilham-hibatul-wafi-a155a4140/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-700 transition transform hover:scale-110">
+                    <span class="sr-only">LinkedIn</span>
+                    <i class="fab fa-linkedin fa-lg"></i>
+                </a>
+                <a href="https://www.instagram.com/brahmatech_/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-pink-600 transition transform hover:scale-110">
+                    <span class="sr-only">Instagram</span>
+                    <i class="fab fa-instagram fa-lg"></i>
+                </a>
+                <a href="https://github.com/Ilhamhibatul" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-900 transition transform hover:scale-110">
+                    <span class="sr-only">GitHub</span>
+                    <i class="fab fa-github fa-lg"></i>
+                </a>
+            </div>
+
+            <!-- Copyright Notice (Adapted from mockup) -->
+            <div class="text-gray-500 font-medium">
+                © 2026 BrahmaTech Inovation | Made With ❤️
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Script -->
     <script src="js/script.js"></script>
 </body>
 </html>
